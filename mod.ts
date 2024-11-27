@@ -1,7 +1,4 @@
-import { Command } from "@cliffy/command";
-import { colors } from "@cliffy/ansi/colors";
-import { Confirm } from "@cliffy/prompt/confirm";
-import { exists, walk } from "@std/fs";
+import { Command, colors, Confirm, exists } from "./deps.ts";
 
 const error = colors.bold.red;
 const warn = colors.bold.yellow;
@@ -14,7 +11,7 @@ await new Command()
   .description("CLI tool for downloading .gitignore")
   .option("-o, --output <path>", "Change the output path of .gitignore.")
   .option("--no-write", "Print the .gitignore instead of to write")
-  .arguments("<laguage>")
+  .arguments("<language>")
   .action(generateGitignoreHandler)
   .command("list", "list language from gitignore.io")
   .action(async () => {
